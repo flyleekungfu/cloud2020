@@ -23,7 +23,7 @@ public class PaymentController {
     private DiscoveryClient discoveryClient;
 
     @Value("${server.port}")
-    private Integer serverPort;
+    private String serverPort;
 
     @PostMapping("/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -59,6 +59,11 @@ public class PaymentController {
         List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
         instances.forEach(instance -> log.info(instance.getServiceId() + "\t" + instance.getHost() + "\t" + instance.getPort() + "\t" + instance.getUri()));
         return this.discoveryClient;
+    }
+
+    @GetMapping("/lb")
+    public String getPaymentLB() {
+        return serverPort;
     }
 
 }

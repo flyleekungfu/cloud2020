@@ -18,7 +18,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @Value("${server.port}")
-    private Integer serverPort;
+    private String serverPort;
 
     @PostMapping("/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -42,6 +42,11 @@ public class PaymentController {
         } else {
             return new CommonResult(444, "没有对应记录，查询ID：" + id, null);
         }
+    }
+
+    @GetMapping("/lb")
+    public String getPaymentLB() {
+        return serverPort;
     }
 
 }
