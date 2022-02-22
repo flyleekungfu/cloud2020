@@ -10,3 +10,4 @@
 /cloud-provider-payment8004/target/
 /cloud-providerconsul-payment8006/target/
 /cloud-consumer-feign-order80/target/
+/cloud-consumer-feign-hystrix-order80/target/
