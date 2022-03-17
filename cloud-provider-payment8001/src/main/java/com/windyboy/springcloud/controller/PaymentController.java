@@ -78,7 +78,7 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value="/payment/zipkin")
+    @GetMapping(value="/zipkin")
     public String paymentZipkin() {
         return "hello,i am paymentZipkin server fallback,O(∩_∩)O哈哈~";
     }
