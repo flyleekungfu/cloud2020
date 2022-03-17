@@ -29,6 +29,9 @@
         <module>cloud-stream-rabbitmq-provider8801</module>
         <module>cloud-stream-rabbitmq-consumer8802</module>
         <module>cloud-stream-rabbitmq-consumer8803</module>
+        <module>cloudalibaba-provider-payment9001</module>
+        <module>cloudalibaba-provider-payment9002</module>
+        <module>cloudalibaba-consumer-nacos-order83</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -51,7 +54,7 @@
         <hutool-all.version>5.1.0</hutool-all.version>
     </properties>
 
-    <!-- 子模块继承之后，提供作用：锁定版本 + 子module不用谢groupId和version -->
+    <!-- 子模块继承之后，提供作用：锁定版本 + 子module不用写groupId和version -->
     <dependencyManagement>
         <dependencies>
             <!--spring boot 2.2.2-->
@@ -59,6 +62,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>2.2.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--Spring cloud alibaba 2.1.0.RELEASE-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -118,7 +129,5 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
