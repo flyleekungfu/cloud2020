@@ -2,9 +2,11 @@ package com.windyboy.springcloud.alibaba.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.windyboy.springcloud.alibaba.service.PaymentService;
 import com.windyboy.springcloud.entities.CommonResult;
 import com.windyboy.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,4 +49,14 @@ public class CircleBreakerController {
         Payment payment = new Payment(id,"null");
         return new CommonResult(444,"blockHandler-sentinel 限流，BlockException： " + e.getMessage(), payment);
     }
+
+    //======OpenFeign
+    @Resource
+    private PaymentService paymentService;
+
+    @GetMapping("/consumer/paymentSQL/{id}")
+    public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id){
+        return paymentService.paymentSQL(id);
+    }
+
 }
