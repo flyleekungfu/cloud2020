@@ -16,6 +16,7 @@ public class OrderController {
 
     /**
      * 创建订单
+     * http://localhost:2001/order/create?userId=1&productId=1&count=10&money=100
      *
      * @param order
      * @return
